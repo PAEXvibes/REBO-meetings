@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>REBO Meetings</title>
 
   <style>
@@ -16,7 +16,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: #ffffff;
+      background: white;
       padding: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       z-index: 1000;
@@ -37,13 +37,16 @@
       color: white;
     }
 
-    iframe {
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      height: calc(100vh - 60px);
-      border: none;
+    .content {
+      padding: 80px 20px 20px 20px;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
     }
   </style>
 </head>
@@ -52,25 +55,51 @@
 
   <div class="top-bar">
     <div class="button-group">
-      <button id="weeklyBtn" class="active" onclick="showPage('weekly')">Weekly</button>
-      <button id="monthlyBtn" onclick="showPage('monthly')">Monthly</button>
+      <button id="weeklyBtn" class="active" onclick="showSection('weekly')">Weekly</button>
+      <button id="monthlyBtn" onclick="showSection('monthly')">Monthly</button>
     </div>
   </div>
 
-  <iframe id="contentFrame" src="https://paexvibes.github.io/REBO-weekly/"></iframe>
+  <div class="content">
+
+    <!-- ✅ WEEKLY CONTENT -->
+    <div id="weekly" class="section active">
+      <h1>Weekly Meeting</h1>
+
+      <!-- KLIPP IN DIN WEEKLY HTML HÄR -->
+      <p>Här lägger du in all din befintliga weekly-kod.</p>
+
+      <!-- exempel -->
+      <!-- <img src="your-image.png" /> -->
+
+    </div>
+
+    <!-- ✅ MONTHLY CONTENT -->
+    <div id="monthly" class="section">
+      <h1>Monthly Meeting</h1>
+
+      <!-- KLIPP IN DIN MONTHLY HTML HÄR -->
+      <p>Här lägger du in all din befintliga monthly-kod.</p>
+
+    </div>
+
+  </div>
 
   <script>
-    function showPage(type) {
-      const frame = document.getElementById("contentFrame");
+    function showSection(type) {
+      const weekly = document.getElementById("weekly");
+      const monthly = document.getElementById("monthly");
       const weeklyBtn = document.getElementById("weeklyBtn");
       const monthlyBtn = document.getElementById("monthlyBtn");
 
       if (type === "weekly") {
-        frame.src = "https://paexvibes.github.io/REBO-weekly/";
+        weekly.classList.add("active");
+        monthly.classList.remove("active");
         weeklyBtn.classList.add("active");
         monthlyBtn.classList.remove("active");
       } else {
-        frame.src = "https://paexvibes.github.io/REBO-monthly/";
+        monthly.classList.add("active");
+        weekly.classList.remove("active");
         monthlyBtn.classList.add("active");
         weeklyBtn.classList.remove("active");
       }
