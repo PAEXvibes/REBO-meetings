@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REBO Meetings</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: white;
+      padding: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    .button-group button {
+      margin-right: 8px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      background: #f0f0f0;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .button-group button.active {
+      background: #0078d4;
+      color: white;
+    }
+
+    .content {
+      padding: 80px 20px 20px 20px;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="top-bar">
+    <div class="button-group">
+      <button id="weeklyBtn" class="active" onclick="showSection('weekly')">Weekly</button>
+      <button id="monthlyBtn" onclick="showSection('monthly')">Monthly</button>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ✅ WEEKLY CONTENT -->
+    <div id="weekly" class="section active">
+      <h1>Weekly Meeting</h1>
+
+      <!-- KLIPP IN DIN WEEKLY HTML HÄR -->
+      <p>Här lägger du in all din befintliga weekly-kod.</p>
+
+      <!-- exempel -->
+      <!-- <img src="your-image.png" /> -->
+
+    </div>
+
+    <!-- ✅ MONTHLY CONTENT -->
+    <div id="monthly" class="section">
+      <h1>Monthly Meeting</h1>
+
+      <!-- KLIPP IN DIN MONTHLY HTML HÄR -->
+      <p>Här lägger du in all din befintliga monthly-kod.</p>
+
+    </div>
+
+  </div>
+
+  <script>
+    function showSection(type) {
+      const weekly = document.getElementById("weekly");
+      const monthly = document.getElementById("monthly");
+      const weeklyBtn = document.getElementById("weeklyBtn");
+      const monthlyBtn = document.getElementById("monthlyBtn");
+
+      if (type === "weekly") {
+        weekly.classList.add("active");
+        monthly.classList.remove("active");
+        weeklyBtn.classList.add("active");
+        monthlyBtn.classList.remove("active");
+      } else {
+        monthly.classList.add("active");
+        weekly.classList.remove("active");
+        monthlyBtn.classList.add("active");
+        weeklyBtn.classList.remove("active");
+      }
+    }
+  </script>
+
+</body>
+</html>
