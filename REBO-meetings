@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>REBO Meetings</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #ffffff;
+      padding: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    .button-group button {
+      margin-right: 8px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      background: #f0f0f0;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .button-group button.active {
+      background: #0078d4;
+      color: white;
+    }
+
+    iframe {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      height: calc(100vh - 60px);
+      border: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="top-bar">
+    <div class="button-group">
+      <button id="weeklyBtn" class="active" onclick="showPage('weekly')">Weekly</button>
+      <button id="monthlyBtn" onclick="showPage('monthly')">Monthly</button>
+    </div>
+  </div>
+
+  <iframe id="contentFrame" src="https://paexvibes.github.io/REBO-weekly/"></iframe>
+
+  <script>
+    function showPage(type) {
+      const frame = document.getElementById("contentFrame");
+      const weeklyBtn = document.getElementById("weeklyBtn");
+      const monthlyBtn = document.getElementById("monthlyBtn");
+
+      if (type === "weekly") {
+        frame.src = "https://paexvibes.github.io/REBO-weekly/";
+        weeklyBtn.classList.add("active");
+        monthlyBtn.classList.remove("active");
+      } else {
+        frame.src = "https://paexvibes.github.io/REBO-monthly/";
+        monthlyBtn.classList.add("active");
+        weeklyBtn.classList.remove("active");
+      }
+    }
+  </script>
+
+</body>
+</html>
